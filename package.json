@@ -1,7 +1,7 @@
 {
-  "name": "agent_tech_stack_guidance",
+  "name": "agent-tech-stack-guidance",
   "version": "1.0.0",
-  "description": "",
+  "description": "CLI tool to easily add agent guidance documentation to your project",
   "main": "index.js",
   "bin": {
     "agent-guidance": "./bin/cli.js"
@@ -9,9 +9,18 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BertramRay/agent-tech-stack-guidance.git"
+  },
+  "keywords": [
+    "cli",
+    "agent",
+    "documentation",
+    "guidance"
+  ],
+  "author": "BertramRay",
+  "license": "MIT",
   "type": "commonjs",
   "dependencies": {
     "commander": "^14.0.2",
