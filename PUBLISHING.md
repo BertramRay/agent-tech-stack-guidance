@@ -52,13 +52,20 @@ agent-guidance init
 
 We have set up a GitHub Action to automatically publish to npm when you create a new release on GitHub.
 
-### Setup
+### Setup (Trusted Publishing)
 
-1.  Go to your GitHub repository settings.
-2.  Navigate to **Secrets and variables** > **Actions**.
-3.  Click **New repository secret**.
-4.  Name: `NPM_TOKEN`.
-5.  Value: Your npm automation token (generated from npmjs.com > Access Tokens).
+We use **NPM Trusted Publishing** (OIDC) to publish without long-lived tokens.
+
+1.  Go to [npmjs.com](https://www.npmjs.com/) and log in.
+2.  Navigate to your package settings (or your profile > Access > Provenance & Publishing).
+3.  Click **"Add a new publisher"**.
+4.  Select **GitHub**.
+5.  Enter the repository owner and name: `BertramRay/agent-tech-stack-guidance`.
+6.  Branch: `main` (or leave default if it asks for a workflow filename, usually it asks for repo/branch/workflow).
+    *   *Note*: For releases, you might need to configure it to trust the release workflow or tag pattern. Usually, trusting the `publish.yml` workflow on the `main` branch or tags is sufficient.
+    *   **Best Practice**: Configure it to trust **"Any tag"** or a specific tag pattern (e.g., `v*`) if possible, or trust the `publish.yml` workflow.
+
+**No secrets needed!** You do *not* need to add `NPM_TOKEN` to GitHub secrets anymore.
 
 ### How to Release
 
