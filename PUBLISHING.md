@@ -71,12 +71,19 @@ We use **NPM Trusted Publishing** (OIDC) to publish without long-lived tokens.
 
 ### How to Release
 
-1.  **Draft a new release** on GitHub.
-2.  **Tag the release** (e.g., `v1.0.1`).
-3.  **Publish**.
-4.  The GitHub Action will:
-    *   Automatically update the `package.json` version to match your tag (e.g., `1.0.1`).
-    *   Publish the package to npm.
+1.  **Update Version**:
+    ```bash
+    npm version patch # or minor/major
+    ```
+    This command updates `package.json` and creates a git tag (e.g., `v1.1.1`).
 
-> **Note**: This keeps the published package version in sync with the GitHub release. However, your local `package.json` in the git repository will remain at the old version unless you manually update it. It is still good practice to run `npm version patch` locally and push, but the Action ensures the *published* artifact is always correct.
+2.  **Push Tags**:
+    ```bash
+    git push && git push --tags
+    ```
+
+3.  **Done!**
+    The GitHub Action will trigger on the new tag `v*` and publish to npm.
+    
+    *Alternatively*, you can Draft a Release on GitHub and create a new tag there, which will also trigger the workflow.
 
